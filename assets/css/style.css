@@ -11,7 +11,11 @@
 	--muted: #6c757d;
 }
 
-body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background: var(--color-pale); color: var(--text-color); }
+./* Forçar Arial em todo o site para consistência com a identidade visual */
+body { font-family: Arial, Helvetica, sans-serif; background: var(--color-pale); color: var(--text-color); }
+
+/* Garantir que elementos de formulário e botões também usem Arial */
+input, button, select, textarea { font-family: Arial, Helvetica, sans-serif; }
 .lead { color: var(--muted); }
 
 /* Header usando o azul como gradiente leve */
@@ -26,31 +30,37 @@ header.bg-primary { background: linear-gradient(135deg, var(--color-primary) 0%,
 .nav-link.active { font-weight: 600; }
 
 /* Navbar component styles: sticky, colors and scroll effect */
-.site-navbar .navbar {
+/* Targets both .site-navbar wrapper and #site-navbar placeholder */
+#site-navbar .navbar, .site-navbar .navbar {
 	position: sticky;
 	top: 0;
 	z-index: 1100;
-	background-color: var(--color-dark);
+	background-color: var(--color-dark); /* #080C17 */
 	padding: 1rem 0;
 	transition: padding 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
 }
+
+#site-navbar .navbar .navbar-brand,
+#site-navbar .navbar .nav-link,
+#site-navbar .navbar .navbar-toggler,
 .site-navbar .navbar .navbar-brand,
 .site-navbar .navbar .nav-link,
-.site-navbar .navbar .navbar-toggler { color: var(--color-pale) !important; }
-.site-navbar .navbar .nav-link { margin-right: .5rem; }
-.site-navbar .navbar .dropdown-menu { min-width: 12rem; }
-.site-navbar .navbar .btn-outline-light { color: var(--color-pale); border-color: rgba(234,241,247,0.15); }
+.site-navbar .navbar .navbar-toggler { color: var(--color-pale) !important; /* #EAF1F7 */ }
+
+#site-navbar .navbar .nav-link, .site-navbar .navbar .nav-link { margin-right: .5rem; }
+#site-navbar .navbar .dropdown-menu, .site-navbar .navbar .dropdown-menu { min-width: 12rem; }
+#site-navbar .navbar .btn-outline-light, .site-navbar .navbar .btn-outline-light { color: var(--color-pale); border-color: rgba(234,241,247,0.15); }
 
 /* Scrolled state: smaller, shadowed */
-.site-navbar .navbar.navbar-scrolled {
+#site-navbar .navbar.navbar-scrolled, .site-navbar .navbar.navbar-scrolled {
 	padding: .45rem 0;
 	box-shadow: 0 8px 30px rgba(0,0,0,0.35);
 	background-color: rgba(8,12,23,0.98);
 }
 
 /* Toggler icon visibility on dark bg */
-.site-navbar .navbar-toggler { border-color: rgba(234,241,247,0.12); }
-.site-navbar .navbar-toggler-icon { filter: invert(1) brightness(2) contrast(1.2); }
+#site-navbar .navbar-toggler, .site-navbar .navbar-toggler { border-color: rgba(234,241,247,0.12); }
+#site-navbar .navbar-toggler-icon, .site-navbar .navbar-toggler-icon { filter: invert(1) brightness(2) contrast(1.2); }
 
 /* CTA buttons use primary color */
 .btn-primary {

@@ -25,7 +25,8 @@ input, button, select, textarea { font-family: Arial, Helvetica, sans-serif; }
 /* Hero: light-blue background with decorative justice scale image (right side) */
 header.bg-primary {
 	/* use the JPG photo if available in assets/img; fallback to SVG path can be added later */
-	background-image: linear-gradient(rgba(234,241,247,0.95), rgba(234,241,247,0.95)), url('assets/img/balanca-da-justica.jpg');
+	/* path is relative to this CSS file (assets/css/) -> go up one level to assets/img/ */
+	background-image: linear-gradient(rgba(234,241,247,0.95), rgba(234,241,247,0.95)), url('../img/balanca-da-justica.jpg');
 	background-color: var(--color-light-blue);
 	background-repeat: no-repeat;
 	background-position: right 6% center;
@@ -46,7 +47,8 @@ header.bg-primary::before {
 /* Apply justice-scale background to the hero text box specifically */
 .hero-text {
 	position: relative;
-	background-image: url('assets/img/balanca-da-justica.jpg');
+	/* path relative to assets/css/style.css */
+	background-image: url('../img/balanca-da-justica.jpg');
 	background-repeat: no-repeat;
 	background-position: right center;
 	background-size: 55%;

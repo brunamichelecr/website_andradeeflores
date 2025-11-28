@@ -24,7 +24,8 @@ input, button, select, textarea { font-family: Arial, Helvetica, sans-serif; }
 /* Header: use light-blue as main hero background (per 60/30/10 strategy) */
 /* Hero: light-blue background with decorative justice scale image (right side) */
 header.bg-primary {
-	background-image: linear-gradient(rgba(234,241,247,0.95), rgba(234,241,247,0.95)), url('assets/images/balanca-da-justica.svg');
+	/* use the JPG photo if available in assets/img; fallback to SVG path can be added later */
+	background-image: linear-gradient(rgba(234,241,247,0.95), rgba(234,241,247,0.95)), url('assets/img/balanca-da-justica.jpg');
 	background-color: var(--color-light-blue);
 	background-repeat: no-repeat;
 	background-position: right 6% center;

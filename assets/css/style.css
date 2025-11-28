@@ -7,6 +7,9 @@
 	--color-pale: #EAF1F7;
 	--color-black: #00040D;
 
+	--text-on-dark: #EAF1F7;
+	--text-on-lightblue: #00040D;
+
 	--text-color: var(--color-dark);
 	--muted: #6c757d;
 }
@@ -18,8 +21,12 @@ body { font-family: Arial, Helvetica, sans-serif; background: var(--color-pale);
 input, button, select, textarea { font-family: Arial, Helvetica, sans-serif; }
 .lead { color: var(--muted); }
 
-/* Header usando o azul como gradiente leve */
-header.bg-primary { background: linear-gradient(135deg, var(--color-primary) 0%, #133f66 100%); color: #fff; }
+/* Header: use light-blue as main hero background (per 60/30/10 strategy) */
+header.bg-primary { background: var(--color-light-blue); color: var(--text-on-lightblue); }
+
+/* Utility backgrounds following the 60/30/10 intent */
+.bg-dark-custom { background-color: var(--color-dark) !important; color: var(--text-on-dark) !important; }
+.bg-lightblue-custom { background-color: var(--color-light-blue) !important; color: var(--text-on-lightblue) !important; }
 
 .card { border: none; background: #fff; }
 
@@ -51,11 +58,11 @@ header.bg-primary { background: linear-gradient(135deg, var(--color-primary) 0%,
 #site-navbar .navbar .navbar-toggler,
 .site-navbar .navbar .navbar-brand,
 .site-navbar .navbar .nav-link,
-.site-navbar .navbar .navbar-toggler { color: var(--color-pale) !important; /* #EAF1F7 */ }
+.site-navbar .navbar .navbar-toggler { color: var(--text-on-dark) !important; }
 
 #site-navbar .navbar .nav-link, .site-navbar .navbar .nav-link { margin-right: .5rem; }
 #site-navbar .navbar .dropdown-menu, .site-navbar .navbar .dropdown-menu { min-width: 12rem; }
-#site-navbar .navbar .btn-outline-light, .site-navbar .navbar .btn-outline-light { color: var(--color-pale); border-color: rgba(234,241,247,0.15); }
+#site-navbar .navbar .btn-outline-light, .site-navbar .navbar .btn-outline-light { color: var(--text-on-dark); border-color: rgba(234,241,247,0.15); }
 
 /* Scrolled state: smaller, shadowed */
 #site-navbar .navbar.navbar-scrolled, .site-navbar .navbar.navbar-scrolled {

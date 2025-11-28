@@ -22,15 +22,10 @@ input, button, select, textarea { font-family: Arial, Helvetica, sans-serif; }
 .lead { color: var(--muted); }
 
 /* Header: use light-blue as main hero background (per 60/30/10 strategy) */
-/* Hero: light-blue background with decorative justice scale image (right side) */
+/* Hero: use light-blue as background; hero text box will hold the photo */
 header.bg-primary {
-	/* use the JPG photo if available in assets/img; fallback to SVG path can be added later */
-	/* path is relative to this CSS file (assets/css/) -> go up one level to assets/img/ */
-	background-image: linear-gradient(rgba(234,241,247,0.95), rgba(234,241,247,0.95)), url('../img/balanca-da-justica.jpg');
+	background-image: none;
 	background-color: var(--color-light-blue);
-	background-repeat: no-repeat;
-	background-position: right 6% center;
-	background-size: 42%;
 	color: var(--text-on-lightblue);
 }
 
@@ -50,14 +45,26 @@ header.bg-primary::before {
 	/* path relative to assets/css/style.css */
 	background-image: url('../img/balanca-da-justica.jpg');
 	background-repeat: no-repeat;
-	background-position: right center;
-	background-size: 55%;
+	background-position: center right;
+	background-size: cover; /* fill the box */
 	padding-right: 2rem;
+	overflow: hidden;
 }
 
-/* Keep the hero text readable: on small screens remove the decorative background */
+/* subtle overlay to keep text readable on top of the photo */
+.hero-text::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(rgba(234,241,247,0.65), rgba(234,241,247,0.35));
+	z-index: 1;
+}
+.hero-text > * { position: relative; z-index: 2; }
+
+/* On small screens reduce overlay and keep the image centered */
 @media (max-width: 991px) {
-	.hero-text { background-image: none; padding-right: 0; }
+	.hero-text { background-position: center; background-size: cover; padding-right: 0; }
+	.hero-text::before { background: linear-gradient(rgba(234,241,247,0.78), rgba(234,241,247,0.6)); }
 }
 
 /* Utility backgrounds following the 60/30/10 intent */

@@ -1,20 +1,53 @@
 // components.js — injeta componentes repetidos (ex.: rodapé)
 document.addEventListener('DOMContentLoaded', function () {
-  const placeholder = document.getElementById('site-footer');
-  if (!placeholder) return;
+  // Inserir navbar e footer via fetch (com fallbacks para file:// preview)
+  function loadComponent(id, url, fallbackHtml) {
+    const el = document.getElementById(id);
+    if (!el) return Promise.resolve();
+    return fetch(url)
+      .then(function (res) {
+        if (!res.ok) throw new Error('Component not found: ' + url);
+        return res.text();
+      })
+      .then(function (html) {
+        el.innerHTML = html;
+      })
+      .catch(function (err) {
+        console.warn('Could not load component', url, err);
+        if (fallbackHtml) el.innerHTML = fallbackHtml;
+      });
+  }
 
-  fetch('assets/components/footer.html')
-    .then(function (res) {
-      if (!res.ok) throw new Error('Footer not found');
-      return res.text();
-    })
-    .then(function (html) {
-      placeholder.innerHTML = html;
-    })
-    .catch(function (err) {
-      console.warn('Could not load footer component:', err);
-      // Fallback: inserir HTML do rodapé diretamente quando fetch falhar
-      const fallback = `
+  const navbarFallback = `
+<nav class="navbar navbar-expand-lg" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">Andrade & Flores</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre Nós</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Áreas</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="civil.html">Direito Civil</a></li>
+            <li><a class="dropdown-item" href="empresarial.html">Direito Empresarial</a></li>
+            <li><a class="dropdown-item" href="familia.html">Direito de Família</a></li>
+            <li><a class="dropdown-item" href="trabalhistas.html">Questões Trabalhistas</a></li>
+            <li><a class="dropdown-item" href="tributario.html">Direito Tributário</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="corpo.html">Corpo Jurídico</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-outline-light ms-2" href="contato.html">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  `;
+
+  const footerFallback = `
 <footer class="site-footer bg-dark text-light pt-5">
   <div class="container">
     <div class="row gy-4">
@@ -35,7 +68,20 @@ document.addEventListener('DOMContentLoaded', function () {
     <small>Desenvolvido por <a href="https://github.com/brunamichelecr" target="_blank" class="text-light">Bruna Ribeiro</a></small>
   </div>
 </footer>
-      `;
-      placeholder.innerHTML = fallback;
-    });
+  `;
+
+  // Load navbar then footer
+  Promise.all([
+    loadComponent('site-navbar', 'assets/components/navbar.html', navbarFallback),
+    loadComponent('site-footer', 'assets/components/footer.html', footerFallback)
+  ]).then(function () {
+    // Add scroll effect to navbar
+    const nav = document.querySelector('#site-navbar .navbar');
+    if (!nav) return;
+    function onScroll() {
+      if (window.scrollY > 50) nav.classList.add('navbar-scrolled'); else nav.classList.remove('navbar-scrolled');
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+  });
 });

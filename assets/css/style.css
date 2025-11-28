@@ -25,6 +25,33 @@ header.bg-primary { background: linear-gradient(135deg, var(--color-primary) 0%,
 .nav-link { color: var(--text-color); }
 .nav-link.active { font-weight: 600; }
 
+/* Navbar component styles: sticky, colors and scroll effect */
+.site-navbar .navbar {
+	position: sticky;
+	top: 0;
+	z-index: 1100;
+	background-color: var(--color-dark);
+	padding: 1rem 0;
+	transition: padding 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+}
+.site-navbar .navbar .navbar-brand,
+.site-navbar .navbar .nav-link,
+.site-navbar .navbar .navbar-toggler { color: var(--color-pale) !important; }
+.site-navbar .navbar .nav-link { margin-right: .5rem; }
+.site-navbar .navbar .dropdown-menu { min-width: 12rem; }
+.site-navbar .navbar .btn-outline-light { color: var(--color-pale); border-color: rgba(234,241,247,0.15); }
+
+/* Scrolled state: smaller, shadowed */
+.site-navbar .navbar.navbar-scrolled {
+	padding: .45rem 0;
+	box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+	background-color: rgba(8,12,23,0.98);
+}
+
+/* Toggler icon visibility on dark bg */
+.site-navbar .navbar-toggler { border-color: rgba(234,241,247,0.12); }
+.site-navbar .navbar-toggler-icon { filter: invert(1) brightness(2) contrast(1.2); }
+
 /* CTA buttons use primary color */
 .btn-primary {
 	background-color: var(--color-primary);

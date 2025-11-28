@@ -22,7 +22,25 @@ input, button, select, textarea { font-family: Arial, Helvetica, sans-serif; }
 .lead { color: var(--muted); }
 
 /* Header: use light-blue as main hero background (per 60/30/10 strategy) */
-header.bg-primary { background: var(--color-light-blue); color: var(--text-on-lightblue); }
+/* Hero: light-blue background with decorative justice scale image (right side) */
+header.bg-primary {
+	background-image: linear-gradient(rgba(234,241,247,0.95), rgba(234,241,247,0.95)), url('assets/images/balanca-da-justica.svg');
+	background-color: var(--color-light-blue);
+	background-repeat: no-repeat;
+	background-position: right 6% center;
+	background-size: 42%;
+	color: var(--text-on-lightblue);
+}
+
+/* Ensure hero content sits above background and keeps contrast */
+header.bg-primary .container { position: relative; z-index: 2; }
+header.bg-primary::before {
+	/* very subtle extra overlay if needed (keeps image light) */
+	content: '';
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+}
 
 /* Utility backgrounds following the 60/30/10 intent */
 .bg-dark-custom { background-color: var(--color-dark) !important; color: var(--text-on-dark) !important; }

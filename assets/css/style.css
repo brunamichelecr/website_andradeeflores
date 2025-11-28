@@ -36,7 +36,7 @@ header.bg-primary::after {
 	content: '';
 	position: absolute;
 	inset: 0;
-	background-image: url('../img/balanca-da-justica.jpg');
+	background-image: url('../img/header-1.jpg');
 	background-repeat: no-repeat;
 	background-position: center bottom;
 	background-size: cover;

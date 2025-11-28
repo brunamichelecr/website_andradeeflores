@@ -11,7 +11,7 @@
 	--muted: #6c757d;
 }
 
-./* Forçar Arial em todo o site para consistência com a identidade visual */
+/* Forçar Arial em todo o site para consistência com a identidade visual */
 body { font-family: Arial, Helvetica, sans-serif; background: var(--color-pale); color: var(--text-color); }
 
 /* Garantir que elementos de formulário e botões também usem Arial */
@@ -32,13 +32,19 @@ header.bg-primary { background: linear-gradient(135deg, var(--color-primary) 0%,
 /* Navbar component styles: sticky, colors and scroll effect */
 /* Targets both .site-navbar wrapper and #site-navbar placeholder */
 #site-navbar .navbar, .site-navbar .navbar {
-	position: sticky;
-	top: 0;
-	z-index: 1100;
+	position: fixed !important;
+	top: 0 !important;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 1100 !important;
 	background-color: var(--color-dark); /* #080C17 */
 	padding: 1rem 0;
-	transition: padding 200ms ease, box-shadow 200ms ease, background-color 200ms ease;
+	transition: padding 200ms ease, box-shadow 200ms ease, background-color 200ms ease, transform 180ms ease;
 }
+
+/* ensure container inside fixed navbar keeps content centered */
+.site-navbar .container, #site-navbar .container { max-width: 1140px; }
 
 #site-navbar .navbar .navbar-brand,
 #site-navbar .navbar .nav-link,

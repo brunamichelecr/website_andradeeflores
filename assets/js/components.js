@@ -75,13 +75,32 @@ document.addEventListener('DOMContentLoaded', function () {
     loadComponent('site-navbar', 'assets/components/navbar.html', navbarFallback),
     loadComponent('site-footer', 'assets/components/footer.html', footerFallback)
   ]).then(function () {
-    // Add scroll effect to navbar
+    // Add scroll effect to navbar and keep content visible by adding body padding equal to navbar height
     const nav = document.querySelector('#site-navbar .navbar');
     if (!nav) return;
+
+    // helper to update body padding to nav height
+    function updateBodyPadding() {
+      try {
+        const h = nav.offsetHeight;
+        document.body.style.paddingTop = h + 'px';
+      } catch (e) {
+        // ignore
+      }
+    }
+
+    // scroll handler: toggle scrolled class and update padding (nav may shrink)
     function onScroll() {
       if (window.scrollY > 50) nav.classList.add('navbar-scrolled'); else nav.classList.remove('navbar-scrolled');
+      // allow transition to complete then update padding
+      setTimeout(updateBodyPadding, 200);
     }
+
+    // initial setup
+    updateBodyPadding();
     onScroll();
+
     window.addEventListener('scroll', onScroll);
+    window.addEventListener('resize', updateBodyPadding);
   });
 });

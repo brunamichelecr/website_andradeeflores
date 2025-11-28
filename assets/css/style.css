@@ -22,34 +22,57 @@ input, button, select, textarea { font-family: Arial, Helvetica, sans-serif; }
 .lead { color: var(--muted); }
 
 /* Header: use the justice-scale photo as full header background (cover) */
+
 header.bg-primary {
-	/* path relative to assets/css/style.css */
-	background-image: url('../img/balanca-da-justica.jpg');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover; /* fill the header area */
+	/* fallback color while image loads */
+	background-color: var(--color-light-blue);
 	color: var(--text-on-lightblue);
 	position: relative;
 	overflow: hidden;
 }
 
-/* Ensure hero content sits above background and keeps contrast */
-header.bg-primary .container { position: relative; z-index: 2; }
+/* Image layer: use ::after so we can animate the photo from bottom-to-top */
+header.bg-primary::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: url('../img/balanca-da-justica.jpg');
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: cover;
+	z-index: 0;
+	transform: translateY(30%);
+	animation: headerRevealUp 900ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+
+/* Ensure hero content sits above image and overlay */
+header.bg-primary .container { position: relative; z-index: 3; }
 header.bg-primary::before {
 	/* overlay to guarantee text legibility on top of the photo */
 	content: '';
 	position: absolute;
 	inset: 0;
 	background: linear-gradient(rgba(8,12,23,0.35), rgba(234,241,247,0.18));
-	z-index: 1;
+	z-index: 2;
 	pointer-events: none;
 }
 
 /* Hero text should sit above the header overlay */
-.hero-text { position: relative; z-index: 2; padding-right: 2rem; }
+.hero-text { position: relative; z-index: 4; padding-right: 2rem; }
 
 @media (max-width: 991px) {
 	.hero-text { padding-right: 0; }
+}
+
+/* Reveal animation: move image from below into place */
+@keyframes headerRevealUp {
+	from { transform: translateY(30%); }
+	to { transform: translateY(0%); }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+	header.bg-primary::after { transform: translateY(0); animation: none; }
 }
 
 /* Make the hero lead paragraph white for better contrast on the header photo */

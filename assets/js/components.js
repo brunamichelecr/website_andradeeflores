@@ -79,11 +79,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const nav = document.querySelector('#site-navbar .navbar');
     if (!nav) return;
 
-    // helper to update body padding to nav height
-    function updateBodyPadding() {
+    // helper to update a spacer element height equal to nav height
+    function updateNavSpacer() {
       try {
         const h = nav.offsetHeight;
-        document.body.style.paddingTop = h + 'px';
+        let spacer = document.getElementById('nav-spacer');
+        if (!spacer) {
+          spacer = document.createElement('div');
+          spacer.id = 'nav-spacer';
+          // insert spacer immediately after the #site-navbar placeholder
+          const placeholder = document.getElementById('site-navbar');
+          if (placeholder && placeholder.parentNode) placeholder.parentNode.insertBefore(spacer, placeholder.nextSibling);
+          else document.body.insertBefore(spacer, document.body.firstChild);
+        }
+        spacer.style.height = h + 'px';
       } catch (e) {
         // ignore
       }
@@ -92,15 +101,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // scroll handler: toggle scrolled class and update padding (nav may shrink)
     function onScroll() {
       if (window.scrollY > 50) nav.classList.add('navbar-scrolled'); else nav.classList.remove('navbar-scrolled');
-      // allow transition to complete then update padding
-      setTimeout(updateBodyPadding, 200);
+      // allow transition to complete then update spacer height
+      setTimeout(updateNavSpacer, 220);
     }
 
     // initial setup
-    updateBodyPadding();
+    updateNavSpacer();
     onScroll();
 
     window.addEventListener('scroll', onScroll);
-    window.addEventListener('resize', updateBodyPadding);
+    window.addEventListener('resize', updateNavSpacer);
   });
 });

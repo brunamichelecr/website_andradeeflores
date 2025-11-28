@@ -43,6 +43,21 @@ header.bg-primary::before {
 	pointer-events: none;
 }
 
+/* Apply justice-scale background to the hero text box specifically */
+.hero-text {
+	position: relative;
+	background-image: url('assets/img/balanca-da-justica.jpg');
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-size: 55%;
+	padding-right: 2rem;
+}
+
+/* Keep the hero text readable: on small screens remove the decorative background */
+@media (max-width: 991px) {
+	.hero-text { background-image: none; padding-right: 0; }
+}
+
 /* Utility backgrounds following the 60/30/10 intent */
 .bg-dark-custom { background-color: var(--color-dark) !important; color: var(--text-on-dark) !important; }
 .bg-lightblue-custom { background-color: var(--color-light-blue) !important; color: var(--text-on-lightblue) !important; }

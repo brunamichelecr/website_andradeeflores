@@ -1,0 +1,9 @@
+/* Estilos adicionais para o site Andrade & Flores */
+body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+.lead { color: #333; }
+header.bg-primary { background: linear-gradient(135deg,#0d6efd 0%, #0b5ed7 100%); }
+.card { border: none; }
+.navbar-brand { color: #0b5ed7 !important; }
+
+/* Barra de contato fixa (opcional) */
+.contact-bar { position: fixed; right: 16px; bottom: 16px; z-index: 1050; }

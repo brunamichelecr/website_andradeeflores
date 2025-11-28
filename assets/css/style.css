@@ -52,6 +52,9 @@ header.bg-primary::before {
 	.hero-text { padding-right: 0; }
 }
 
+/* Make the hero lead paragraph white for better contrast on the header photo */
+header.bg-primary .hero-text .lead { color: #ffffff !important; }
+
 /* Utility backgrounds following the 60/30/10 intent */
 .bg-dark-custom { background-color: var(--color-dark) !important; color: var(--text-on-dark) !important; }
 .bg-lightblue-custom { background-color: var(--color-light-blue) !important; color: var(--text-on-lightblue) !important; }

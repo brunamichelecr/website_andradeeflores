@@ -29,6 +29,12 @@ header.bg-primary {
 	color: var(--text-on-lightblue);
 	position: relative;
 	overflow: hidden;
+	/* Make header taller to give more visual presence */
+	padding-top: 5.5rem;
+	padding-bottom: 5.5rem;
+	min-height: 520px;
+	display: flex;
+	align-items: center; /* vertical center */
 }
 
 /* Image layer: use ::after so we can animate the photo from bottom-to-top */
@@ -62,6 +68,16 @@ header.bg-primary::before {
 
 @media (max-width: 991px) {
 	.hero-text { padding-right: 0; }
+}
+
+@media (max-width: 767px) {
+	header.bg-primary { padding-top: 3.5rem; padding-bottom: 3.5rem; min-height: 360px; }
+}
+
+/* On very small screens keep content slightly higher for visual balance */
+@media (max-width: 480px) {
+	header.bg-primary { align-items: flex-start; padding-top: 3rem; padding-bottom: 3rem; }
+	.hero-text { margin-top: 0.5rem; }
 }
 
 /* Reveal animation: move image from below into place */
@@ -148,4 +164,38 @@ footer a { color: var(--color-light-blue); }
 
 /* Small components */
 .contact-bar { position: fixed; right: 16px; bottom: 16px; z-index: 1050; }
+
+/* Developer credit styling: make the footer credit low-contrast gray */
+.developer-credit small { color: #7f878b; }
+.developer-credit a { color: #7f878b; text-decoration: none; }
+.developer-credit a:hover, .developer-credit a:focus { color: #bfc6c9; text-decoration: underline; }
+
+/* Contact icon and lines styling */
+.contact-lines { margin-top: .35rem; }
+.contact-line { margin-top: .25rem; display: flex; align-items: center; }
+.contact-icon {
+	width: 18px !important;
+	height: 18px !important;
+	min-width: 18px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: .5rem;
+	color: #7f878b;
+	flex: 0 0 18px;
+}
+.contact-line a { color: inherit; text-decoration: none; }
+.contact-line a:hover, .contact-line a:focus { text-decoration: underline; }
+
+/* Inline contact (email • whatsapp) */
+.contact-inline { display: inline-flex; align-items: center; gap: .5rem; }
+
+/* Styles for lawyer contact lines on contato.html */
+.adv-contact-lines { margin-top: .35rem; }
+.adv-contact-lines .contact-item { display: flex; align-items: center; gap: .5rem; margin-top: .35rem; }
+.adv-contact-lines .contact-item .contact-icon { width: 16px; height: 16px; color: #7f878b; flex: 0 0 16px; }
+.adv-contact-lines .contact-link { display: inline-flex; align-items: center; gap: .5rem; color: inherit; text-decoration: none; }
+.adv-contact-lines .contact-link:hover, .adv-contact-lines .contact-link:focus { text-decoration: underline; }
+
+/* WhatsApp icon hover: subtle green on hover/focus */
+.adv-contact-lines .contact-link.whatsapp .contact-icon { color: #7f878b; transition: transform 160ms ease; }
 

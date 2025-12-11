@@ -190,7 +190,7 @@ footer a { color: var(--color-light-blue); }
 .contact-inline { display: inline-flex; align-items: center; gap: .5rem; }
 
 /* Styles for lawyer contact lines on contato.html */
-.adv-contact-lines { margin-top: .35rem; }
+.adv-contact-lines { margin-top: .35rem; margin-bottom: 1rem; }
 .adv-contact-lines .contact-item { display: flex; align-items: center; gap: .5rem; margin-top: .35rem; }
 .adv-contact-lines .contact-item .contact-icon { width: 16px; height: 16px; color: #7f878b; flex: 0 0 16px; }
 .adv-contact-lines .contact-link { display: inline-flex; align-items: center; gap: .5rem; color: inherit; text-decoration: none; }
@@ -198,4 +198,18 @@ footer a { color: var(--color-light-blue); }
 
 /* WhatsApp icon hover: subtle green on hover/focus */
 .adv-contact-lines .contact-link.whatsapp .contact-icon { color: #7f878b; transition: transform 160ms ease; }
+
+/* Biography text styling (used for attorney bios) */
+.bio-text {
+	text-align: justify;
+	line-height: 1.6;
+}
+
+.bio-text h6 {
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.5rem;
+}
+
+ 
 

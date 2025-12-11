@@ -298,6 +298,23 @@ footer a { color: var(--color-light-blue); }
 	}
 }
 
+/* Match lawyer names in corpo.html to the about page title sizing */
+@media (min-width: 992px) {
+	.corpo-card .card-title {
+		font-size: 2.6rem;
+		line-height: 1.04;
+		font-weight: 700;
+		margin-bottom: 1rem;
+	}
+}
+
+@media (max-width: 991px) {
+	.corpo-card .card-title {
+		font-size: 1.75rem;
+		margin-bottom: 0.5rem;
+	}
+}
+
 @media (max-width: 991px) {
 	.content-card .card-body {
 		padding: 1rem;
@@ -306,8 +323,10 @@ footer a { color: var(--color-light-blue); }
 }
 
 /* Ensure comfortable padding on smaller screens for corpo cards */
-.corpo-card .card-body {
-	padding: 1rem; /* match content-card mobile spacing */
+@media (max-width: 991px) {
+	.corpo-card .card-body {
+		padding: 1rem; /* match content-card mobile spacing */
+	}
 }
 
  

@@ -1,4 +1,4 @@
-// components.js — injeta componentes repetidos (ex.: rodapé)
+// components.js - injeta componentes repetidos (ex.: rodapé)
 document.addEventListener('DOMContentLoaded', function () {
   // Inserir navbar e footer via fetch (com fallbacks para file:// preview)
   function loadComponent(id, url, fallbackHtml) {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
       <div class="col-md-6">
         <h5>Andrade & Flores Sociedade de Advogados</h5>
         <p class="mb-1"><strong>CNPJ:</strong> 59.636.849/0001-07</p>
-        <p class="mb-3"><strong>Endereço:</strong><br>Rua Comendador Torlogo Dauntre Cambuí, 74<br>Sala 1207 — Campinas - SP</p>
+        <p class="mb-3"><strong>Endereço:</strong><br>Rua Comendador Torlogo Dauntre Cambuí, 74<br>Sala 1207 - Campinas - SP</p>
         <a href="contato.html" class="btn btn-primary">Entrar em contato</a>
       </div>
     </div>

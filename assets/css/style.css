@@ -328,6 +328,29 @@ footer a { color: var(--color-light-blue); }
 		padding: 1rem; /* match content-card mobile spacing */
 	}
 }
+/* Cropped header image used on area pages (e.g., civil.html) */
 
- 
+.hero-crop {
+	overflow: visible; /* allow full image to show */
+	height: auto; /* let image define height */
+	margin: .75rem 0;
+	display: block;
+	/* width is set at runtime to match the H1 width */
+}
+.hero-crop__img {
+	width: 100%;
+	height: auto; /* preserve aspect ratio and show entire image */
+	object-fit: contain; /* show whole image within the box */
+	object-position: center center;
+	display: block;
+}
+
+@media (max-width: 991px) {
+	.hero-crop { /* mobile: allow a slightly taller visual but still full image */ }
+}
+
+/* If JS is disabled, allow the image to remain full-width as a graceful fallback */
+.content-card .hero-crop { max-width: 100%; }
+
+
 

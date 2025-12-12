@@ -248,6 +248,24 @@ footer a { color: var(--color-light-blue); }
 	z-index: 6;
 }
 
+/* About card: constrain width for improved reading rhythm and center on large screens */
+.about-card {
+	max-width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.about-card .card-body .btn { min-width: 140px; }
+
+/* Spacing for section headings inside about page */
+.about-card h4 { margin-bottom: .6rem; margin-top: 1rem; }
+
+@media (max-width: 767px) {
+	.about-title { font-size: 1.6rem; }
+	.about-card { padding-left: .75rem; padding-right: .75rem; }
+	.about-card .card-body .btn { width: 100%; display: block; margin-bottom: .5rem; }
+}
+
 .about-text-column p,
 .about-text-column .lead,
 .about-text-column ul,
@@ -308,6 +326,22 @@ footer a { color: var(--color-light-blue); }
 	}
 }
 
+/* Surname styling: allow wrapping to avoid layout overflow and ensure flexible shrinking */
+.surname {
+	white-space: normal;
+	display: block;
+}
+
+/* Allow the left column (name block) to shrink within the flex row so buttons do not overflow */
+.corpo-card .card-body > .d-flex.justify-content-between > .flex-grow-1 {
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 991px) {
+	.surname { font-size: 1.1rem; }
+}
+
 @media (max-width: 991px) {
 	.corpo-card .card-title {
 		font-size: 1.75rem;
@@ -333,9 +367,9 @@ footer a { color: var(--color-light-blue); }
 .hero-crop {
 	overflow: visible; /* allow full image to show */
 	height: auto; /* let image define height */
-	margin: .75rem 0;
+	margin: .75rem auto; /* center the crop */
 	display: block;
-	/* width is set at runtime to match the H1 width */
+	max-width: 720px; /* constrain width for better reading rhythm */
 }
 .hero-crop__img {
 	width: 100%;
@@ -351,6 +385,76 @@ footer a { color: var(--color-light-blue); }
 
 /* If JS is disabled, allow the image to remain full-width as a graceful fallback */
 .content-card .hero-crop { max-width: 100%; }
+
+/* Responsive tweaks for corpo.html: keep buttons aligned with the first name on desktop,
+   but stack content on narrow screens to avoid overflow and preserve readability. */
+@media (max-width: 767px) {
+	.corpo-card .card-body > .d-flex.justify-content-between {
+		flex-direction: column;
+		gap: .5rem;
+		align-items: flex-start;
+	}
+
+	.corpo-card .card-body .d-flex[role="group"] {
+		margin-top: .25rem;
+		align-self: flex-start;
+	}
+
+	/* Allow surnames to wrap on very small screens if necessary */
+	.surname { white-space: normal; font-size: 1rem; }
+
+	/* Slightly reduce top-line title size on very small screens */
+	.corpo-card .card-title { font-size: 1.35rem; }
+}
+
+/* Mobile: make hero CTAs full-width and spaced for easier tapping */
+@media (max-width: 767px) {
+	.hero-crop + p .btn,
+	.hero-crop ~ p .btn {
+		display: block;
+		width: 100%;
+		margin-right: 0 !important;
+		margin-bottom: .5rem;
+	}
+	.hero-crop + p .btn:last-child,
+	.hero-crop ~ p .btn:last-child {
+		margin-bottom: 0.25rem;
+	}
+}
+
+/* Mobile-specific layout for corpo.html: larger, more prominent names and stacked full-width contact buttons */
+@media (max-width: 767px) {
+	.corpo-card .card-title {
+		font-size: 1.8rem; /* larger on mobile for emphasis */
+		line-height: 1.02;
+		font-weight: 800;
+	}
+
+	.corpo-card .card-body > .d-flex.justify-content-between {
+		flex-direction: column;
+		gap: .25rem;
+		align-items: stretch;
+	}
+
+	.corpo-card .card-body > .d-flex.justify-content-between .flex-grow-1 {
+		order: 1;
+	}
+
+	.corpo-card .card-body > .d-flex.justify-content-between .d-flex[role="group"] {
+		order: 2;
+		width: 100%;
+		margin-top: .5rem;
+		display: flex;
+		gap: .5rem;
+		align-items: stretch;
+	}
+
+	.corpo-card .card-body > .d-flex.justify-content-between .d-flex[role="group"] .btn {
+		width: 100%;
+		display: block;
+		white-space: normal;
+	}
+}
 
 
 

@@ -227,16 +227,19 @@ footer a { color: var(--color-light-blue); }
 /* Reviews iframe styling */
 .ratio iframe { border: 0; }
 
-/* Cookie consent bar */
 .cookie-consent {
-	background: rgba(8,12,23,0.98);
-	color: var(--color-pale);
-	position: fixed;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 2000;
+    background: rgba(8,12,23,0.98);
+    color: var(--color-pale);
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
 }
+/* Make the cookie text slightly lighter for better contrast on dark background */
+.cookie-consent .cookie-text { color: rgba(234,241,247,0.98); }
+/* More specific rule to override Bootstrap's .text-muted and ensure higher contrast */
+.cookie-consent .cookie-text.small.text-muted { color: rgba(234,241,247,0.98) !important; }
 .cookie-consent .cookie-text a { color: var(--color-light-blue); text-decoration: underline; }
 .cookie-consent .cookie-actions { display: flex; gap: .5rem; }
 @media (max-width: 767px) {

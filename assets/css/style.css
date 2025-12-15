@@ -162,6 +162,54 @@ header.bg-primary .hero-text .lead { color: #ffffff !important; }
 footer.bg-light { background: var(--color-black); color: var(--color-pale); }
 footer a { color: var(--color-light-blue); }
 
+/* Skip link - visible on focus for keyboard users */
+.skip-link {
+	position: absolute;
+	left: -999px;
+	top: -999px;
+	background: #fff;
+	color: var(--color-dark);
+	padding: .5rem .75rem;
+	z-index: 2000;
+}
+.skip-link:focus {
+	left: 1rem;
+	top: 1rem;
+	border-radius: 4px;
+}
+
+/* Area cards on index */
+.area-card { color: inherit; }
+.area-card .card-body { min-height: 96px; display:flex; align-items:flex-start; gap:1rem; }
+.area-card:hover { box-shadow: 0 8px 20px rgba(0,0,0,0.08); transform: translateY(-4px); transition: all 180ms ease; }
+
+@media (max-width: 767px) {
+	.area-card .card-body { min-height: 72px; }
+}
+
+.area-card-icon { width: 36px; height: 36px; flex: 0 0 36px; color: var(--color-primary); }
+.area-card .card-body svg { display: block; }
+
+/* Icon wrapper for homepage area cards: match footer background color */
+.icon-wrapper {
+	width: 56px;
+	height: 56px;
+	background-color: #ffffff; /* match .card background */
+	border-radius: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 56px;
+	box-shadow: none;
+	border: none;
+}
+.icon-wrapper img {
+	width: 36px;
+	height: 36px;
+	object-fit: contain; /* preserve original icon color and aspect */
+	display: block;
+}
+
 /* Small components */
 .contact-bar { position: fixed; right: 16px; bottom: 16px; z-index: 1050; }
 

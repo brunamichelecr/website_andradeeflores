@@ -214,6 +214,19 @@ footer a { color: var(--color-light-blue); }
 	display: block;
 }
 
+/* Reviews (homepage) */
+.review-card { border: 1px solid rgba(0,0,0,0.04); }
+.review-stars { color: #F5A623; font-size: 1rem; line-height: 1; }
+.review-text { color: var(--color-dark); }
+.reviewer { font-weight: 600; }
+
+@media (max-width: 767px) {
+	.review-stars { font-size: 0.95rem; }
+}
+
+/* Reviews iframe styling */
+.ratio iframe { border: 0; }
+
 /* Small components */
 .contact-bar { position: fixed; right: 16px; bottom: 16px; z-index: 1050; }
 

@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function () {
       </div>
       <div class="col-md-6">
         <h5>Andrade & Flores Sociedade de Advogados</h5>
+        <p class="mb-1"><strong>OAB/SP</strong> 58.974</p>
         <p class="mb-1"><strong>CNPJ:</strong> 59.636.849/0001-07</p>
         <p class="mb-3"><strong>Endereço:</strong><br>Rua Comendador Torlogo Dauntre Cambuí, 74<br>Sala 1207 - Campinas - SP</p>
         <a href="contato.html" class="btn btn-primary">Entrar em contato</a>
@@ -82,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
   </div>
   <div class="developer-credit bg-black text-center py-2 mt-4">
-    <small>Desenvolvido por <a href="https://github.com/brunamichelecr" target="_blank" class="text-light">Bruna Ribeiro</a></small>
+    <small>©2025 Desenvolvido por <a href="https://github.com/brunamichelecr" target="_blank" rel="noopener noreferrer" class="text-light">Bruna Ribeiro</a>. Todos os direitos reservados.</small>
   </div>
 </footer>
   `;

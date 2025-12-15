@@ -130,6 +130,10 @@ header.bg-primary .hero-text .lead { color: #ffffff !important; }
 .site-navbar .navbar .nav-link,
 .site-navbar .navbar .navbar-toggler { color: var(--text-on-dark) !important; }
 
+/* Navbar logo sizing and alignment */
+.navbar-logo { width: 40px; height: 40px; object-fit: contain; display: inline-block; }
+.navbar-brand span { line-height: 1; }
+
 #site-navbar .navbar .nav-link, .site-navbar .navbar .nav-link { margin-right: .5rem; }
 #site-navbar .navbar .dropdown-menu, .site-navbar .navbar .dropdown-menu { min-width: 12rem; }
 #site-navbar .navbar .btn-outline-light, .site-navbar .navbar .btn-outline-light { color: var(--text-on-dark); border-color: rgba(234,241,247,0.15); }

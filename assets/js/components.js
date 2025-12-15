@@ -21,7 +21,24 @@ document.addEventListener('DOMContentLoaded', function () {
   const navbarFallback = `
 <nav class="navbar navbar-expand-lg bg-dark-custom" aria-label="Main navigation">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="index.html">Andrade & Flores</a>
+    <a class="navbar-brand fw-bold d-inline-flex align-items-center" href="index.html">
+      <svg class="navbar-logo me-2" width="40" height="40" viewBox="0 0 128 108.38516" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Andrade & Flores logo">
+        <g transform="translate(-659.01062,-406.69818)">
+          <g transform="matrix(0.40680762,0,0,0.40680762,322.47064,334.03091)">
+            <g transform="matrix(1.7455096,0,0,1.7455096,501.46797,-5.009355)">
+              <path style="fill:#ffffff" d="m 253.45882,239.38224 c 4.91729,-7.1676 -4.93337,-17.90406 -7.64157,-18.37998 -2.43545,4.49756 -4.66551,11.85286 7.64157,18.37998 z" />
+            </g>
+            <g transform="matrix(-1.7455096,0,0,1.7455096,1467.7182,-4.7285459)">
+              <path style="fill:#ffffff" d="m 253.45882,239.38224 c 4.91729,-7.1676 -4.93337,-17.90406 -7.64157,-18.37998 -2.43545,4.49756 -4.66551,11.85286 7.64157,18.37998 z" />
+            </g>
+            <g transform="matrix(1.7455096,0,0,1.7455096,501.86584,9.1476594)" style="stroke:#ffffff">
+              <path style="fill:#ffffff;stroke:#ffffff" d="m 276.09959,98.654307 h 0.0852 l 5.63063,110.123833 c -5.79857,5.41522 -6.03119,5.46518 -11.02473,0 z" />
+            </g>
+          </g>
+        </g>
+      </svg>
+      <span>Andrade & Flores</span>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <li><a class="dropdown-item" href="civil.html">Direito Civil</a></li>
             <li><a class="dropdown-item" href="empresarial.html">Direito Empresarial</a></li>
             <li><a class="dropdown-item" href="familia.html">Direito de Família</a></li>
-              <li><a class="dropdown-item" href="trabalhistas.html">Direito Trabalhista</a></li>
+            <li><a class="dropdown-item" href="trabalhistas.html">Direito Trabalhista</a></li>
             <li><a class="dropdown-item" href="tributario.html">Direito Tributário</a></li>
           </ul>
         </li>

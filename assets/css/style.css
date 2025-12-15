@@ -227,6 +227,54 @@ footer a { color: var(--color-light-blue); }
 /* Reviews iframe styling */
 .ratio iframe { border: 0; }
 
+/* Cookie consent bar */
+.cookie-consent {
+	background: rgba(8,12,23,0.98);
+	color: var(--color-pale);
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2000;
+}
+.cookie-consent .cookie-text a { color: var(--color-light-blue); text-decoration: underline; }
+.cookie-consent .cookie-actions { display: flex; gap: .5rem; }
+@media (max-width: 767px) {
+	.cookie-consent .container { padding-left: .75rem; padding-right: .75rem; }
+	.cookie-consent { font-size: 0.95rem; }
+}
+
+/* Close button inside cookie bar */
+.cookie-close {
+	color: var(--color-pale);
+	font-size: 1.1rem;
+	line-height: 1;
+	text-decoration: none;
+	border-radius: 6px;
+	background: transparent;
+	border: 1px solid rgba(234,241,247,0.06);
+	width: 32px;
+	height: 32px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.cookie-close:hover, .cookie-close:focus {
+	color: #fff;
+	text-decoration: none;
+	background: rgba(255,255,255,0.02);
+}
+
+@media (max-width: 480px) {
+	.cookie-close { width: 28px; height: 28px; font-size: 1rem; }
+}
+
+/* Privacy modal: small, low-contrast text to avoid high visual weight */
+.privacy-modal .modal-content { background: #ffffff; }
+.privacy-modal .modal-body { font-size: 0.85rem; color: #2b2b2b; line-height: 1.45; }
+.privacy-modal .modal-title { font-size: 1rem; font-weight: 700; }
+.privacy-modal .modal-footer .btn-secondary { background: #e9ecef; border-color: #dee2e6; color: #212529; }
+
 /* Small components */
 .contact-bar { position: fixed; right: 16px; bottom: 16px; z-index: 1050; }
 

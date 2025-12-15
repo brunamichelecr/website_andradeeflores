@@ -115,5 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('scroll', onScroll);
     window.addEventListener('resize', updateNavSpacer);
+    // notify other scripts that components have been loaded into the DOM
+    try { document.dispatchEvent(new Event('components:loaded')); } catch (e) { /* ignore */ }
   });
 });

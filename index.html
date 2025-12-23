@@ -19,6 +19,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Preload component fragments early to reduce fetch chain and improve LCP -->
+    <link rel="preload" href="assets/components/navbar.html" as="fetch">
+    <link rel="preload" href="assets/components/footer.html" as="fetch">
     <meta name="description" content="Andrade & Flores — advocacia consultiva com foco em prevenção, ética e soluções estratégicas nas áreas civil, empresarial, trabalhista e tributário.">
     <title>Escritório Andrade & Flores - Home</title>
     <!-- Preload the WebP hero (generate files locally as instructed) -->
@@ -51,7 +54,7 @@
     <link rel="preconnect" href="https://maps.googleapis.com">
     <link rel="preconnect" href="https://maps.google.com">
     <link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Pular para o conteúdo</a>

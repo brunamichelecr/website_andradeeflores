@@ -47,3 +47,47 @@ function initCookieConsent() {
 // Try to init on custom event (components loaded) and also on DOMContentLoaded
 document.addEventListener('components:loaded', function () { initCookieConsent(); });
 document.addEventListener('DOMContentLoaded', function () { setTimeout(initCookieConsent, 300); });
+
+// Lazy-load Google Maps placeholders: replace .map-placeholder with iframe on intersection or click
+function initMapPlaceholders() {
+  const placeholders = document.querySelectorAll('.map-placeholder');
+  if (!placeholders || placeholders.length === 0) return;
+
+  function loadPlaceholder(el) {
+    if (!el || el.dataset.loaded) return;
+    const src = el.getAttribute('data-src');
+    if (!src) return;
+    const iframe = document.createElement('iframe');
+    iframe.setAttribute('title', 'Mapa — Andrade & Flores');
+    iframe.setAttribute('src', src);
+    iframe.setAttribute('style', 'border:0; width:100%; height:100%;');
+    iframe.setAttribute('loading', 'lazy');
+    iframe.setAttribute('allowfullscreen', '');
+    el.innerHTML = '';
+    el.appendChild(iframe);
+    el.dataset.loaded = 'true';
+  }
+
+  // click handler to load immediately
+  placeholders.forEach(function (ph) {
+    const btn = ph.querySelector('.map-load-btn');
+    if (btn) btn.addEventListener('click', function () { loadPlaceholder(ph); });
+  });
+
+  // Use IntersectionObserver where available
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          loadPlaceholder(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { root: null, rootMargin: '200px', threshold: 0.01 });
+
+    placeholders.forEach(function (ph) { io.observe(ph); });
+  }
+}
+
+document.addEventListener('components:loaded', initMapPlaceholders);
+document.addEventListener('DOMContentLoaded', function () { setTimeout(initMapPlaceholders, 500); });

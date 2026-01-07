@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="civil.html">Direito Civil</a></li>
             <li><a class="dropdown-item" href="empresarial.html">Direito Empresarial</a></li>
+            <li><a class="dropdown-item" href="imobiliario.html">Direito Imobiliário</a></li>
             <li><a class="dropdown-item" href="familia.html">Direito de Família</a></li>
             <li><a class="dropdown-item" href="trabalhistas.html">Direito Trabalhista</a></li>
             <li><a class="dropdown-item" href="tributario.html">Direito Tributário</a></li>

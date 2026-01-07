@@ -16,6 +16,10 @@ function initCookieConsent() {
   const accepted = localStorage.getItem('cookieConsent');
   if (accepted === 'yes' || accepted === 'no') {
     consentBar.classList.add('d-none');
+    // If user previously accepted, ensure analytics is loaded
+    if (accepted === 'yes') {
+      loadGtagFromMeta();
+    }
     return;
   }
   // show bar (ensure visible)
@@ -33,6 +37,7 @@ function initCookieConsent() {
     acceptBtn.addEventListener('click', function () {
       localStorage.setItem('cookieConsent', 'yes');
       hideBar();
+      loadGtagFromMeta();
     });
   }
   if (closeBtn) {
@@ -40,7 +45,37 @@ function initCookieConsent() {
     closeBtn.addEventListener('click', function () {
       localStorage.setItem('cookieConsent', 'yes');
       hideBar();
+      loadGtagFromMeta();
     });
+  }
+}
+
+// Load GA4 (gtag) dynamically. Reads measurement ID from a meta tag
+// <meta name="ga4-id" content="G-XXXXXXXXXX">
+function loadGtag(measurementId) {
+  if (!measurementId) return;
+  if (window._ga_loaded) return;
+  var s = document.createElement('script');
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + measurementId;
+  s.async = true;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);} 
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', measurementId, { 'anonymize_ip': true });
+  window._ga_loaded = true;
+}
+
+function loadGtagFromMeta() {
+  try {
+    var meta = document.querySelector('meta[name="ga4-id"]');
+    if (!meta) return;
+    var id = (meta.getAttribute('content') || '').trim();
+    if (!id) return;
+    loadGtag(id);
+  } catch (e) {
+    console.error('loadGtagFromMeta error', e);
   }
 }
 

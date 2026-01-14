@@ -126,3 +126,34 @@ function initMapPlaceholders() {
 
 document.addEventListener('components:loaded', initMapPlaceholders);
 document.addEventListener('DOMContentLoaded', function () { setTimeout(initMapPlaceholders, 500); });
+
+// Track click-to-call conversions for Google Ads
+(function initTelConversionListener(){
+  function sendTelConversion(){
+    if (window.gtag) {
+      try {
+        gtag('event', 'conversion', { 'send_to': 'AW-17876126703/0gwlCPGijOMbEO-XgMxC' });
+      } catch (e) { /* ignore errors */ }
+    } else {
+      // gtag not loaded yet — no-op
+      // If you need guaranteed delivery, consider using GTM or delaying navigation briefly.
+      // console.warn('gtag not available for tel conversion');
+    }
+  }
+
+  function attach() {
+    var telLinks = document.querySelectorAll('a[href^="tel:"]');
+    if (!telLinks) return;
+    telLinks.forEach(function (el) {
+      el.addEventListener('click', function () {
+        sendTelConversion();
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach);
+  } else {
+    attach();
+  }
+})();
